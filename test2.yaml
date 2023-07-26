@@ -39,44 +39,41 @@ pages:
     - rows:
           - columns:
                - components:
-      - html: >-
-          Metric components render an HTML template based on data. Users can customize the HTML and Javascript based on data.
-      - html: "<h4><strong>Default Metric</strong></h4><br />"
-      - displayer:
-          type: METRIC
-          chart:
-            height: 100
-          general:
-            visible: true
-            title: Total Products
-          lookup:
-            uuid: products
-            group:
-              - functions:
-                  - source: STARS
-                    function: SUM
-      - html: >-
-          <hr /> 
-          The following metric uses custom HTML and Javascript template:<br/>
-      - displayer:
-          type: METRIC
-          html:
-            html: >-
-              <h2><strong>&#10026; Total Products:</strong>&nbsp;<span id="${this}">${value}</span></h2>
-            javascript: >-
-              ${this}.onmouseover = function() {
-                    ${this}.style.color = "red";
-                };
-                ${this}.onmouseout = function() {
-                    ${this}.style.color = "black";
-                };
-          general:
-            visible: true
-            title: Total Products
-          lookup:
-            uuid: products
-            group:
-              - functions:
-                  - source: STARS
-                    function: SUM
+                     - html: >-
+                            Metric components render an HTML template based on data. Users can customize the HTML and Javascript based on data.
+                     - html: "<h4><strong>Default Metric</strong></h4><br />"
+                     - displayer:
+                         type: METRIC
+                         chart:
+                           height: 100
+                         general:
+                           visible: true
+                           title: Total Products
+                         lookup:
+                           uuid: RSD
+                           group:
+                             - functions:
+                                - source: STARS
+                                  function: SUM
+                     - displayer:
+                         type: METRIC
+                         html:
+                           html: >-
+                             <h2><strong>&#10026; Total Products:</strong>&nbsp;<span id="${this}">${value}</span></h2>
+                         javascript: >-
+                             ${this}.onmouseover = function() {
+                                 ${this}.style.color = "red";
+                             };
+                             ${this}.onmouseout = function() {
+                                 ${this}.style.color = "black";
+                             };
+                         general:
+                           visible: true
+                           title: Total Products
+                         lookup:
+                           uuid: RSD
+                         group:
+                           - functions:
+                              - source: STARS
+                                function: SUM
 
