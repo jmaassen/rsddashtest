@@ -103,7 +103,7 @@ pages:
                - components:
                       - html: >-
                         <hr /> 
-                        The following metric uses custom HTML and Javascript template:<br/>
+                        The following metric uses custom HTML and Javascript template<br/>
                       - displayer:
                           type: METRIC
                           html:
