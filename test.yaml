@@ -1,9 +1,10 @@
 properties:
     SeriesColor: cyan
     organization: 35c17f17-6b5f-4385-aa8b-6b1d33a10157
+    organization_url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=${organization} 
 global:
     mode: dark
-    allowUrlParameters: true   
+    allowUrlParameters: "true"   
     settings:
         export:
             png: true
@@ -11,7 +12,7 @@ global:
             uuid: RSD
 datasets:
     - uuid: RSD
-      url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=${organization}
+      url: ${organization_url}
       cacheEnabled: "true"
       expression: >- 
         $.[
