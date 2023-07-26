@@ -1,0 +1,118 @@
+properties:
+    SeriesColor: cyan
+global:
+    mode: dark
+    settings:
+        export:
+            png: true
+        lookup:
+            uuid: RSD
+datasets:
+    - uuid: RSD
+      url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=35c17f17-6b5f-4385-aa8b-6b1d33a10157
+      cacheEnabled: "true"
+      expression: >- 
+        $.[
+            ( $.is_published = true ? 
+                    [
+                        $.slug, 
+                        $.concept_doi,
+                        $.star_count,
+                        $count($.releases)
+
+                    ]
+            )
+        ]    
+      columns:
+            - id: ID
+              type: LABEL
+            - id: DOI
+              type: LABEL
+            - id: STARS
+              type: NUMBER
+            - id: RELEASES
+              type: NUMBER
+
+pages:
+    - rows:
+          - columns:
+                - components:
+                      - html: >-
+                            <p>
+                                <p style="font-size: xx-large">
+                                Netherlands eScience Center
+                                </p>
+                                <small>
+                                    RSD Statistics
+                                </small>
+                                <hr />
+                            </p>
+          - properties:
+              margin-bottom: 100px
+              margin-top: 50px
+            columns:
+                - span: 3
+                  components:
+                      - settings:
+                            type: METRIC
+                            general:
+                                title: Total Software Entries
+                            columns:
+                                - id: Total Software Entries
+                                  pattern: "#"
+                            lookup:
+                                uuid: RSD
+                                group:
+                                    - functions:
+                                          - source: ID
+                                            function: COUNT
+                - span: 3
+                  components:
+                      - settings:
+                            type: METRIC
+                            general:
+                                title: Total Releases
+                            columns:
+                                - id: Total Releases
+                                  pattern: "#"
+                            lookup:
+                                uuid: RSD
+                                group:
+                                    - functions:
+                                          - source: RELEASES
+                                            function: SUM
+                - span: 3
+                  components:
+                      - settings:
+                            type: METRIC
+                            general:
+                                title: Total Stars
+                            columns:
+                                - id: Total Stars
+                                  pattern: "#"
+                            lookup:
+                                uuid: RSD
+                                group:
+                                    - functions:
+                                          - source: STARS
+                                            function: SUM
+          - columns:
+              - components:
+                      - html: >-
+                            <hr style="width: 2px; border: dashed 1px" />
+                            <p style="margin: 1px 10px 30px 10px; font-size: x-large">
+
+                                <strong>Entries</strong>
+                            </p>
+                      - settings:
+                            component: table
+                            external:
+                                width: 100%
+                                height: 500px
+                            lookup:
+                                uuid: RSD
+                                group:
+                                    - functions:
+                                          - source: ID
+                                          - source: DOI
+                                          - source: STARS
