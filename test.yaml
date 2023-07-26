@@ -100,7 +100,7 @@ pages:
                                           - source: STARS
                                             function: SUM
           - columns:
-              - components:
+                - components:
                       - html: >-
                         <hr /> 
                         The following metric uses custom HTML and Javascript template bla<br/>
