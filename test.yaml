@@ -11,7 +11,7 @@ global:
             uuid: RSD
 datasets:
     - uuid: RSD
-      url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id={organization}
+      url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=${organization}
       cacheEnabled: "true"
       expression: >- 
         $.[
