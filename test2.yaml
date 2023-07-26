@@ -38,60 +38,45 @@ datasets:
 pages:
     - rows:
           - columns:
-                - components:
-                      - html: >-
-                            <p>
-                                <p style="font-size: xx-large">
-                                Netherlands eScience Center
-                                </p>
-                                <small>
-                                    RSD Statistics
-                                </small>
-                                <hr />
-                            </p>
-          - columns:
-                - components:
-                      - html: >-
-                        <hr /> 
-                        The following metric uses custom HTML and Javascript template bla<br/>
-                      - displayer:
-                          type: METRIC
-                          html:
-                            html: >-
-                              <h2><strong>&#10026; Total Products:</strong>&nbsp;<span id="${this}">${value}</span></h2>
-                            javascript: >-
-                              ${this}.onmouseover = function() {
-                                     ${this}.style.color = "red";
-                                 };
-                              ${this}.onmouseout = function() {
-                                 ${this}.style.color = "black";
-                              };
-                          general:
-                            visible: true
-                            title: Total Products
-                          lookup:
-                            uuid: RSD
-                            group:
-                              - functions:
-                                  - source: STARS
-                                    function: SUM
-          - columns:
-              - components:
-                      - html: >-
-                            <hr style="width: 2px; border: dashed 1px" />
-                            <p style="margin: 1px 10px 30px 10px; font-size: x-large">
+               - components:
+      - html: >-
+          Metric components render an HTML template based on data. Users can customize the HTML and Javascript based on data.
+      - html: "<h4><strong>Default Metric</strong></h4><br />"
+      - displayer:
+          type: METRIC
+          chart:
+            height: 100
+          general:
+            visible: true
+            title: Total Products
+          lookup:
+            uuid: products
+            group:
+              - functions:
+                  - source: STARS
+                    function: SUM
+      - html: >-
+          <hr /> 
+          The following metric uses custom HTML and Javascript template:<br/>
+      - displayer:
+          type: METRIC
+          html:
+            html: >-
+              <h2><strong>&#10026; Total Products:</strong>&nbsp;<span id="${this}">${value}</span></h2>
+            javascript: >-
+              ${this}.onmouseover = function() {
+                    ${this}.style.color = "red";
+                };
+                ${this}.onmouseout = function() {
+                    ${this}.style.color = "black";
+                };
+          general:
+            visible: true
+            title: Total Products
+          lookup:
+            uuid: products
+            group:
+              - functions:
+                  - source: STARS
+                    function: SUM
 
-                                <strong>Entries</strong>
-                            </p>
-                      - settings:
-                            component: table
-                            external:
-                                width: 100%
-                                height: 500px
-                            lookup:
-                                uuid: RSD
-                                group:
-                                    - functions:
-                                          - source: ID
-                                          - source: DOI
-                                          - source: STARS
