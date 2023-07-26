@@ -99,8 +99,8 @@ pages:
                                     - functions:
                                           - source: STARS
                                             function: SUM
-          - columns:
-                - components:
+                - span: 2
+                  components:
                       - html: >-
                         <hr /> 
                         The following metric uses custom HTML and Javascript template bla<br/>
