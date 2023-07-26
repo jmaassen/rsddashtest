@@ -99,6 +99,32 @@ pages:
                                     - functions:
                                           - source: STARS
                                             function: SUM
+                - span: 3
+                  components:
+                      - html: >-
+                        <hr /> 
+                        The following metric uses custom HTML and Javascript template:<br/>
+                      - displayer:
+                          type: METRIC
+                          html:
+                            html: >-
+                              <h2><strong>&#10026; Total Products:</strong>&nbsp;<span id="${this}">${value}</span></h2>
+                            javascript: >-
+                              ${this}.onmouseover = function() {
+                                     ${this}.style.color = "red";
+                                 };
+                              ${this}.onmouseout = function() {
+                                 ${this}.style.color = "black";
+                              };
+                          general:
+                            visible: true
+                            title: Total Products
+                          lookup:
+                            uuid: RSD
+                            group:
+                              - functions:
+                                  - source: STARS
+                                    function: SUM
           - columns:
               - components:
                       - html: >-
