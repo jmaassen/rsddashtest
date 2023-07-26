@@ -1,5 +1,4 @@
 properties:
-    SeriesColor: cyan
     organization: 35c17f17-6b5f-4385-aa8b-6b1d33a10157
     organization_url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=${organization} 
 global:
@@ -50,55 +49,32 @@ pages:
                                 </small>
                                 <hr />
                             </p>
-          - properties:
-              margin-bottom: 100px
-              margin-top: 50px
-            columns:
-                - span: 3
-                  components:
-                      - settings:
-                            type: METRIC
-                            general:
-                                title: Total Software Entries
-                            columns:
-                                - id: Total Software Entries
-                                  pattern: "#"
-                            lookup:
-                                uuid: RSD
-                                group:
-                                    - functions:
-                                          - source: ID
-                                            function: COUNT
-                - span: 3
-                  components:
-                      - settings:
-                            type: METRIC
-                            general:
-                                title: Total Releases
-                            columns:
-                                - id: Total Releases
-                                  pattern: "#"
-                            lookup:
-                                uuid: RSD
-                                group:
-                                    - functions:
-                                          - source: RELEASES
-                                            function: SUM
-                - span: 3
-                  components:
-                      - settings:
-                            type: METRIC
-                            general:
-                                title: Total Stars
-                            columns:
-                                - id: Total Stars
-                                  pattern: "#"
-                            lookup:
-                                uuid: RSD
-                                group:
-                                    - functions:
-                                          - source: STARS
-                                            function: SUM
+          - columns:
+                - components:
+                      - html: >-
+                        <hr /> 
+                        The following metric uses custom HTML and Javascript template bla<br/>
+                      - displayer:
+                          type: METRIC
+                          html:
+                            html: >-
+                              <h2><strong>&#10026; Total Products:</strong>&nbsp;<span id="${this}">${value}</span></h2>
+                            javascript: >-
+                              ${this}.onmouseover = function() {
+                                     ${this}.style.color = "red";
+                                 };
+                              ${this}.onmouseout = function() {
+                                 ${this}.style.color = "black";
+                              };
+                          general:
+                            visible: true
+                            title: Total Products
+                          lookup:
+                            uuid: RSD
+                            group:
+                              - functions:
+                                  - source: STARS
+                                    function: SUM
           - columns:
               - components:
                       - html: >-
