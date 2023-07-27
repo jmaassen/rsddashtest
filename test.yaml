@@ -36,6 +36,21 @@ datasets:
             - id: RELEASES
               type: NUMBER
 
+    - uuid: RSD2
+      url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=35c17f17-6b5f-4385-aa8b-6b1d33a10157
+      cacheEnabled: "true"
+      expression: >- 
+        [ 
+           ["Archived", $count( $.[ $.concept_doi != null ? "1" ][0])],
+           ["Not archived", $count( $.[ $.concept_doi = null ? "1" ][0])] 
+        ] 
+      columns:
+        - id: ARCHIVED_STATUS
+          type: LABEL
+        - id: ARCHIVED
+          type: NUMBER
+
+
 pages:
     - rows:
           - columns:
@@ -100,15 +115,19 @@ pages:
                                           - source: STARS
                                             function: SUM
           - columns:
+
+          - columns:
               - components:
                   - settings:
                       type: PIECHART
                       subtype: DONUT
+                      general: 
+                          title: SW Archiving
+                      columns:
+                        - id: ARCHIVED
+                        - id: NOTARCHIVED
                       lookup:
-                          uuid: RSD 
-                          filter: 
-                              - column: DOI
-                                function: NOT_NULL
+                          uuid: RSD2
 
               - components:
                       - html: >-
