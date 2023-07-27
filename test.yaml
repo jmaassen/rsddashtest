@@ -101,6 +101,16 @@ pages:
                                             function: SUM
           - columns:
               - components:
+                  - settings:
+                      type: PIECHART
+                      subtype: DONUT
+                      lookup:
+                          uuid: RSD 
+                          filter: 
+                              - column: DOI
+                                function: NOT_NULL
+
+              - components:
                       - html: >-
                             <hr style="width: 2px; border: dashed 1px" />
                             <p style="margin: 1px 10px 30px 10px; font-size: x-large">
