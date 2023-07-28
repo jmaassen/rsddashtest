@@ -24,7 +24,9 @@ datasets:
                         $.concept_doi,
                         $.star_count,
                         $count($.releases),
-                        $count($.mentions)
+                        $count($.mentions),
+                        $.fork_count
+
                     ]
             )
         ]    
@@ -38,6 +40,8 @@ datasets:
             - id: RELEASES
               type: NUMBER
             - id: MENTIONS
+              type: NUMBER
+            - id: FORKCOUNT
               type: NUMBER
  
     - uuid: RSD2
@@ -178,6 +182,26 @@ pages:
                             group:
                               - functions:
                                   - source: STARS
+                                    function: SUM
+
+                - span: 3
+                  components:
+                    - displayer:
+                        type: METRIC
+                        general:
+                          title: Forks
+                        chart:
+                          width: 150
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-code-fork";
+                        columns:
+                          - id: ID
+                            pattern: "#"
+                        lookup:
+                            uuid: RSD
+                            group:
+                              - functions:
+                                  - source: FORKCOUNT
                                     function: SUM
 
           - columns:
