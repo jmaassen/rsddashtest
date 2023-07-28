@@ -241,4 +241,8 @@ pages:
                                     - functions:
                                           - source: ID
                                           - source: DOI
-                                          - source: STARS
+                                          - source: STARS 
+                                          - source: RELEASES
+                                          - source: MENTIONS
+
+
