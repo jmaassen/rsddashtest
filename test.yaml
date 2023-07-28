@@ -107,6 +107,8 @@ pages:
                           title: Software Entries
                         chart:
                           width: 150
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-cubes";
                         columns:
                           - id: ID
                             pattern: "#"
