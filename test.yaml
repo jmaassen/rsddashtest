@@ -163,8 +163,7 @@ pages:
                               - functions:
                                   - source: MENTIONS
                                     function: SUM
-
-            - columns:
+          - columns:
                 - span: 3
                   components:
                     - displayer:
