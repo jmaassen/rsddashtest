@@ -114,7 +114,7 @@ pages:
                         chart:
                           width: 150
                         html:
-                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-floppy-o";
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-code";
                         columns:
                           - id: ID
                             pattern: "#"
