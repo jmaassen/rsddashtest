@@ -164,6 +164,10 @@ pages:
                                   - source: MENTIONS
                                     function: SUM
 
+          - properties:
+              margin-bottom: 10px
+              margin-top: 50px
+            columns:
                 - span: 3
                   components:
                     - displayer:
