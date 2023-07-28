@@ -50,6 +50,19 @@ datasets:
         - id: ARCHIVED
           type: NUMBER
 
+    - uuid: RSD3
+      url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=35c17f17-6b5f-4385-aa8b-6b1d33a10157
+      cacheEnabled: "true"
+      expression: >- 
+        [ 
+           ["Has releases", $count( $.[ $count($.releases) != 0 ? "1" ][0])],
+           ["No releases", $count( $.[ $count($.releases) = 0 ? "1" ][0])] 
+        ] 
+      columns:
+        - id: RELEASES_STATUS
+          type: LABEL
+        - id: HAS_RELEASES
+          type: NUMBER
 
 pages:
     - rows:
@@ -114,10 +127,10 @@ pages:
                                     - functions:
                                           - source: STARS
                                             function: SUM
+    - rows:
           - columns:
-
-          - columns:
-              - components:
+              - span: 3
+                components:
                   - settings:
                       type: PIECHART
                       subtype: DONUT
@@ -129,6 +142,43 @@ pages:
                       lookup:
                           uuid: RSD2
 
+              - span: 3
+                components:
+                  - settings:
+                      type: PIECHART
+                      subtype: DONUT
+                      general: 
+                          title: SW Releases
+                      columns:
+                        - id: RELEASES_STATUS
+                        - id: HAS_RELEASES
+                      lookup:
+                          uuid: RSD3   
+
+              - span: 3   
+                components:
+                  - html: "<h1>Most starred software</h1>"
+                  - displayer:
+                      type: BARCHART
+                      subtype: BAR
+                      lookup:
+                        uuid: RSD
+                        filter: 
+                              - column: STARS
+                                function: GREATER_THAN
+                                args:
+                                    - 100
+                        sort:
+                          - column: STARS
+                        group:
+                          - columnGroup:
+                              source: ID
+                            functions:
+                              - source: ID
+                              - source: STARS  
+          
+    - rows:
+              - span: 9
               - components:
                       - html: >-
                             <hr style="width: 2px; border: dashed 1px" />
