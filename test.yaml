@@ -177,24 +177,9 @@ pages:
                             uuid: RSD
                             group:
                               - functions:
-                                  - source: MENTIONS
+                                  - source: STARS
                                     function: SUM
 
-                - span: 2
-                  components:
-                      - settings:
-                            type: METRIC
-                            general:
-                                title: Total Stars
-                            columns:
-                                - id: Total Stars
-                                  pattern: "#"
-                            lookup:
-                                uuid: RSD
-                                group:
-                                    - functions:
-                                          - source: STARS
-                                            function: SUM
           - columns:
               - span: 3
                 components:
