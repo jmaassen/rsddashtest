@@ -21,7 +21,7 @@ datasets:
                         $.slug, 
                         $.concept_doi,
                         $.star_count,
-                        $count($.releases)
+                        $count($.releases),
                         $count($.mentions)
                     ]
             )
