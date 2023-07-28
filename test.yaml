@@ -110,7 +110,7 @@ pages:
                         chart:
                           width: 150
                         html:
-                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-cubes";
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-floppy-o";
                         columns:
                           - id: ID
                             pattern: "#"
@@ -140,21 +140,45 @@ pages:
                                   - source: RELEASES
                                     function: SUM
 
-                - span: 2
+                - span: 3
                   components:
-                      - settings:
-                            type: METRIC
-                            general:
-                                title: Total Mentions
-                            columns:
-                                - id: Total Mentions
-                                  pattern: "#"
-                            lookup:
-                                uuid: RSD
-                                group:
-                                    - functions:
-                                          - source: MENTIONS
-                                            function: SUM
+                    - displayer:
+                        type: METRIC
+                        general:
+                          title: Mentions
+                        chart:
+                          width: 150
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-comments-o";
+                        columns:
+                          - id: ID
+                            pattern: "#"
+                        lookup:
+                            uuid: RSD
+                            group:
+                              - functions:
+                                  - source: MENTIONS
+                                    function: SUM
+
+                - span: 3
+                  components:
+                    - displayer:
+                        type: METRIC
+                        general:
+                          title: Stars
+                        chart:
+                          width: 150
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-star-o";
+                        columns:
+                          - id: ID
+                            pattern: "#"
+                        lookup:
+                            uuid: RSD
+                            group:
+                              - functions:
+                                  - source: MENTIONS
+                                    function: SUM
 
                 - span: 2
                   components:
