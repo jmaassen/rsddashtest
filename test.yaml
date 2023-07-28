@@ -118,40 +118,26 @@ pages:
                               - functions:
                                   - source: ID
                                     function: COUNT
-
-
-
-                - span: 2
+                - span: 3
                   components:
-                      - settings:
-                            type: METRIC
-                            general:
-                                title: Total Software Entries
-                            columns:
-                                - id: Total Software Entries
-                                  pattern: "#"
-                            lookup:
-                                uuid: RSD
-                                group:
-                                    - functions:
-                                          - source: ID
-                                            function: COUNT
+                    - displayer:
+                        type: METRIC
+                        general:
+                          title: Software Releases
+                        chart:
+                          width: 150
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-cubes";
+                        columns:
+                          - id: ID
+                            pattern: "#"
+                        lookup:
+                            uuid: RSD
+                            group:
+                              - functions:
+                                  - source: RELEASES
+                                    function: COUNT
 
-                - span: 2
-                  components:
-                      - settings:
-                            type: METRIC
-                            general:
-                                title: Total Releases
-                            columns:
-                                - id: Total Releases
-                                  pattern: "#"
-                            lookup:
-                                uuid: RSD
-                                group:
-                                    - functions:
-                                          - source: RELEASES
-                                            function: SUM
                 - span: 2
                   components:
                       - settings:
