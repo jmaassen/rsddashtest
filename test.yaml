@@ -22,7 +22,7 @@ datasets:
                         $.concept_doi,
                         $.star_count,
                         $count($.releases)
-
+                        $count($.mentions)
                     ]
             )
         ]    
@@ -35,7 +35,9 @@ datasets:
               type: NUMBER
             - id: RELEASES
               type: NUMBER
-
+            - id: MENTIONS
+              type: NUMBER
+ 
     - uuid: RSD2
       url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=35c17f17-6b5f-4385-aa8b-6b1d33a10157
       cacheEnabled: "true"
@@ -64,6 +66,21 @@ datasets:
         - id: HAS_RELEASES
           type: NUMBER
 
+    - uuid: RSD4
+      url: https://research-software-directory.org/api/v1/rpc/organisation_stats?organisation_id=35c17f17-6b5f-4385-aa8b-6b1d33a10157
+      cacheEnabled: "true"
+      expression: >- 
+        [ 
+           ["Has mentions", $count( $.[ $count($.mentions) != 0 ? "1" ][0])],
+           ["No mentions", $count( $.[ $count($.mention) = 0 ? "1" ][0])] 
+        ] 
+      columns:
+        - id: MENTIONS_STATUS
+          type: LABEL
+        - id: HAS_MENTIONS
+          type: NUMBER
+
+
 pages:
     - rows:
           - columns:
@@ -82,7 +99,7 @@ pages:
               margin-bottom: 100px
               margin-top: 50px
             columns:
-                - span: 3
+                - span: 2
                   components:
                       - settings:
                             type: METRIC
@@ -97,7 +114,7 @@ pages:
                                     - functions:
                                           - source: ID
                                             function: COUNT
-                - span: 3
+                - span: 2
                   components:
                       - settings:
                             type: METRIC
@@ -112,7 +129,23 @@ pages:
                                     - functions:
                                           - source: RELEASES
                                             function: SUM
-                - span: 3
+                - span: 2
+                  components:
+                      - settings:
+                            type: METRIC
+                            general:
+                                title: Total Mentions
+                            columns:
+                                - id: Total Mentions
+                                  pattern: "#"
+                            lookup:
+                                uuid: RSD
+                                group:
+                                    - functions:
+                                          - source: MENTIONS
+                                            function: SUM
+
+                - span: 2
                   components:
                       - settings:
                             type: METRIC
@@ -127,7 +160,6 @@ pages:
                                     - functions:
                                           - source: STARS
                                             function: SUM
-    - rows:
           - columns:
               - span: 3
                 components:
@@ -135,7 +167,7 @@ pages:
                       type: PIECHART
                       subtype: DONUT
                       general: 
-                          title: SW Archiving
+                          title: Archiving
                       columns:
                         - id: ARCHIVED
                         - id: NOTARCHIVED
@@ -148,15 +180,28 @@ pages:
                       type: PIECHART
                       subtype: DONUT
                       general: 
-                          title: SW Releases
+                          title: Releases
                       columns:
                         - id: RELEASES_STATUS
                         - id: HAS_RELEASES
                       lookup:
                           uuid: RSD3   
 
-              - span: 3   
+              - span: 3
                 components:
+                  - settings:
+                      type: PIECHART
+                      subtype: DONUT
+                      general: 
+                          title: Mentions
+                      columns:
+                        - id: MENTIONS_STATUS
+                        - id: HAS_MENTIONS
+                      lookup:
+                          uuid: RSD4   
+
+          - columns:
+              - components:
                   - html: "<h1>Most starred software</h1>"
                   - displayer:
                       type: BARCHART
@@ -177,9 +222,7 @@ pages:
                               - source: ID
                               - source: STARS  
           
-    - rows:
           - columns:
-              - span: 9
               - components:
                       - html: >-
                             <hr style="width: 2px; border: dashed 1px" />
