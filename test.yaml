@@ -178,6 +178,7 @@ pages:
                               - source: STARS  
           
     - rows:
+          - columns:
               - span: 9
               - components:
                       - html: >-
