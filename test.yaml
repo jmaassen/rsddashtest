@@ -99,6 +99,26 @@ pages:
               margin-bottom: 100px
               margin-top: 50px
             columns:
+                - span: 3
+                  components:
+                    - displayer:
+                        type: METRIC
+                        general:
+                          title: Software Entries
+                        chart:
+                          width: 150
+                        columns:
+                          - id: ID
+                            pattern: "#"
+                        lookup:
+                            uuid: RSD
+                            group:
+                              - functions:
+                                  - source: ID
+                                    function: COUNT
+
+
+
                 - span: 2
                   components:
                       - settings:
@@ -114,6 +134,7 @@ pages:
                                     - functions:
                                           - source: ID
                                             function: COUNT
+
                 - span: 2
                   components:
                       - settings:
