@@ -6,6 +6,8 @@ Simple test dashboard for the RSD.
 
 https://www.dashbuilder.org/
 https://www.dashbuilder.org/kitchensink/
+https://www.dashbuilder.org/docs/#chap-dashbuilder-what-is
+
 https://raw.githubusercontent.com/kiegroup/kie-samples/main/samples/
 https://start.kubesmarts.org/
 
