@@ -12,5 +12,5 @@ total_mentions 3000.0
 
 # HELP total_mentions total number of mentions
 # TYPE total_mentios gauge 
-software_doi{with_doi} 500.0
-software_doi{without_doi} 42.0
+software_doi{status="with_doi"} 500.0
+software_doi{status="without_doi"} 42.0
