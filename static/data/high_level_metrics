@@ -1,7 +1,7 @@
 # HELP total_software_entries total number of software entries
-# TYPE total_software_entries gauge
-total_software_entries 233.0
+# TYPE total_software_entries counter
+total_software_entries{generation="0"} 233.0
 
 # HELP total_software_releases total number of software releases
-# TYPE total_software_releases gauge
-total_software_releases 1000.0
+# TYPE total_software_releases counter
+total_software_releases{generation="0"} 1000.0
