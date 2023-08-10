@@ -5,3 +5,7 @@ total_software_entries{generation="0"} 233.0
 # HELP total_software_releases total number of software releases
 # TYPE total_software_releases counter
 total_software_releases{generation="0"} 1000.0
+
+# HELP total_mentions total number of mentions
+# TYPE total_mentios gauge 
+total_mentions 3000.0
