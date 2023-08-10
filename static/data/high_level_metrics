@@ -10,7 +10,7 @@ total_software_releases 1000.0
 # TYPE total_mentios gauge 
 total_mentions 3000.0
 
-# HELP total_mentions total number of mentions
-# TYPE total_mentios gauge 
+# HELP software_doi software with or without conceptdoi
+# TYPE software_doi gauge 
 software_doi{status="with_doi"} 500.0
 software_doi{status="without_doi"} 42.0
