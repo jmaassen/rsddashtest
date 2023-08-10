@@ -12,5 +12,5 @@ total_mentions 3000.0
 
 # HELP software_doi software with or without conceptdoi
 # TYPE software_doi gauge 
-software_doi{status="with_doi"} 500.0
-software_doi{status="without_doi"} 42.0
+software_doi{status="doi"} 500.0
+software_doi{status="nodoi"} 42.0
