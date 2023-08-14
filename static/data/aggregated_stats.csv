@@ -2,4 +2,14 @@ name,label,value
 software_doi,with_concept_doi,500
 software_doi,without_concept_doi,42
 software_doi,unknown,33
+language_count, Java, 60
+language_count, JavaScript, 100
+language_count, Python, 500
+language_count, TypeScript, 33
+language_count, Fortran, 10
+language_count, C, 6
+language_count, HTML, 7
+language_count, C++, 8
+language_count, Rust, 3
+language_count, Matlab, 3
 
