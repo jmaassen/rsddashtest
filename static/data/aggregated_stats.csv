@@ -1,7 +1,17 @@
 name,label,value
-software_doi,with_concept_doi,500
-software_doi,without_concept_doi,42
-software_doi,unknown,33
+software_doi, is citable,500
+software_doi, non citable,42
+software_mentions, has mentions, 220
+software_mentions, no mentions, 13
+software_releases, has releases, 200
+software_releases, no releases, 33
+software_repository, github, 150
+software_repository, gitlab, 10
+software_repository, bitbucket, 1
+software_repository, none, 7
+software_license_count, Apache-2, 200
+software_license_count, GPL, 200
+software_license_count, MIT, 200
 language_count, Java, 60
 language_count, JavaScript, 100
 language_count, Python, 500
