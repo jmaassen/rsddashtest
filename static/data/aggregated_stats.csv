@@ -9,9 +9,9 @@ software_repository, github, 150
 software_repository, gitlab, 10
 software_repository, bitbucket, 1
 software_repository, none, 7
-software_license_count, Apache-2, 200
-software_license_count, GPL, 200
-software_license_count, MIT, 200
+software_license, Apache-2, 200
+software_license, GPL, 200
+software_license, MIT, 200
 language_count, Java, 60
 language_count, JavaScript, 100
 language_count, Python, 500
