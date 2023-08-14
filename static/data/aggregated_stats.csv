@@ -12,6 +12,9 @@ software_repository, none, 7
 software_license, Apache-2, 200
 software_license, GPL, 200
 software_license, MIT, 200
+software_maintenance_status, actively maintained, 200
+software_maintenance_status, passively maintained, 100
+software_maintenance_status, not maintained, 200
 language_count, Java, 60
 language_count, JavaScript, 100
 language_count, Python, 500
