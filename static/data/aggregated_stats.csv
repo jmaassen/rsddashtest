@@ -5,10 +5,9 @@ software_mentions, has mentions, 220
 software_mentions, no mentions, 13
 software_releases, has releases, 200
 software_releases, no releases, 33
-software_repository, github, 150
-software_repository, gitlab, 10
-software_repository, bitbucket, 1
-software_repository, none, 7
+software_repository, github, 230
+software_repository, gitlab, 2
+software_repository, none, 1
 software_license, Apache-2, 200
 software_license, GPL, 200
 software_license, MIT, 200
