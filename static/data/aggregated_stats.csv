@@ -103,6 +103,8 @@ software_repository, gitlab, 2
 software_repository, github, 231
 software_doi, not citable, 31
 software_doi, is citable, 203
+software_releases, no releases, 43
+software_releases, has releases, 191
 software_license, LGPL-2.0, 1
 software_license, Apache 2.0, 1
 software_license, BSD-2-Clause, 1
