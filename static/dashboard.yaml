@@ -59,6 +59,8 @@ pages:
         properties:
           width: 100%
           navGroupId: MainGroup
+          targetDivId: all_div
+      - div: all_div
 
   - name: Metrics
     properties:
@@ -93,7 +95,7 @@ pages:
                                 group:
                                   - functions:
                                      - source: value
-          
+
 navTree:
   root_items:
     - type: GROUP
