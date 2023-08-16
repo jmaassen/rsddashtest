@@ -1,11 +1,4 @@
 name, label, value
-software_license_abbrev, MIT, 2
-software_license_abbrev, BSD, 4
-software_license_abbrev, LGPL, 4
-software_license_abbrev, AGPL, 4
-software_license_abbrev, other, 5
-software_license_abbrev, GPL, 15
-software_license_abbrev, Apache, 207
 software_contributors, huge team (20+), 3
 software_contributors, large team (6-20), 37
 software_contributors, single contributor, 56
@@ -103,6 +96,9 @@ software_repository, gitlab, 2
 software_repository, github, 231
 software_doi, not citable, 31
 software_doi, is citable, 203
+software_license_type, other, 5
+software_license_type, copyleft, 23
+software_license_type, permissive, 213
 language_count_abbrev, C, 16
 language_count_abbrev, TypeScript, 21
 language_count_abbrev, C++, 23
