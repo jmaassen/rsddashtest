@@ -10,7 +10,7 @@ software_mentions, no mentions, 117
 software_mentions, has mentions, 117
 software_maintenance_status, unknown, 5
 software_maintenance_status, maintenance only, 44
-software_maintenance_status, dead, 91
+software_maintenance_status, not maintained, 91
 software_maintenance_status, active development, 94
 language_count, Jasmin, 1
 language_count, Go, 1
