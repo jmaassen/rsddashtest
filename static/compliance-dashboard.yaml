@@ -1,0 +1,499 @@
+properties:
+   metricsData: https://raw.githubusercontent.com/jmaassen/rsddashtest/main/static/data/high_level_metrics.csv
+   statisticsData: https://raw.githubusercontent.com/jmaassen/rsddashtest/main/static/data/aggregated_stats.csv
+   bgColor: Lavender
+
+global:
+    settings:
+      html:
+        html: >-
+          <div id="${this}" class="card-pf card-pf-aggregate-status" style="background-color: ${bgColor}; width: 90%; height: 100px; margin: 10px; border-radius: 10px">
+            <h2 style="font-weight: 600; font-size: x-large" id="${this}Value">${value}</h2>
+            <p style="font-weight: 400" id="${this}Title"><em id="${this}Icon" class=""></em> ${title}</p>
+          </div>
+      extraConfiguration: >-
+        {
+            "color": [
+             "#ff6961",
+             "#8cd47e",
+             "#7abd7e",
+             "#f8D66D"
+             ]
+        }
+
+datasets:
+    - uuid: METRICS      
+      url: ${metricsData}
+      columns: 
+        - id: Metric
+          type: LABEL
+        - id: Value
+          type: Label
+
+    - uuid: STATISTICS      
+      url: ${statisticsData}
+      columns: 
+        - id: Metric
+          type: LABEL
+        - id: Label
+          type: LABEL
+        - id: Value
+          type: Label
+
+pages:
+    - rows:
+        - columns:
+            - properties:
+                text-align: center
+                margin-bottom: 10px
+                font-size: xx-large
+                font-weight: bold                
+              components:
+                - html: Netherlands eScience Center RSD Metrics <hr />
+
+        - columns: 
+            - span: 2
+              components:
+                   - displayer:
+                        type: METRIC
+                        general:
+                          title: Software Entries
+                        chart:
+                          width: 200
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-code";
+                        columns:
+                          - id: Value
+                            pattern: "#"
+                        lookup:
+                            uuid: METRICS
+                            filter:
+                             - column: Metric
+                               function: EQUALS_TO
+                               args:
+                                 - total_software_entries
+                            group:
+                              - functions:
+                                  - source: value
+
+            - span: 2
+              components:
+                   - displayer:
+                        type: METRIC
+                        general:
+                          title: Software Releases
+                        chart:
+                          width: 200
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-cubes";
+                        columns:
+                          - id: Value
+                            pattern: "#"
+                        lookup:
+                            uuid: METRICS
+                            filter:
+                             - column: Metric
+                               function: EQUALS_TO
+                               args:
+                                 - total_software_releases
+                            group:
+                              - functions:
+                                  - source: value
+
+            - span: 2
+              components:
+                   - displayer:
+                        type: METRIC
+                        general:
+                          title: Mentions
+                        chart:
+                          width: 200
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-comments-o";
+                        columns:
+                          - id: Value
+                            pattern: "#"
+                        lookup:
+                            uuid: METRICS
+                            filter:
+                             - column: Metric
+                               function: EQUALS_TO
+                               args:
+                                 - total_mentions
+                            group:
+                              - functions:
+                                  - source: value
+
+            - span: 2
+              components:
+                   - displayer:
+                        type: METRIC
+                        general:
+                          title: Contributors
+                        chart:
+                          width: 200
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-users";
+                        columns:
+                          - id: Value
+                            pattern: "#"
+                        lookup:
+                            uuid: METRICS
+                            filter:
+                             - column: Metric
+                               function: EQUALS_TO
+                               args:
+                                 - total_contributors
+                            group:
+                              - functions:
+                                  - source: value
+
+            - span: 2
+              components:
+                   - displayer:
+                        type: METRIC
+                        general:
+                          title: Organizations
+                        chart:
+                          width: 200
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-building-o";
+                        columns:
+                          - id: Value
+                            pattern: "#"
+                        lookup:
+                            uuid: METRICS
+                            filter:
+                             - column: Metric
+                               function: EQUALS_TO
+                               args:
+                                 - total_participating_organizations
+                            group:
+                              - functions:
+                                  - source: value
+
+        - columns:
+            - properties:
+                text-align: center
+                margin-bottom: 10px
+                font-size: xx-large
+                font-weight: bold                
+              components:
+                - html: Best practices compliance <hr />
+        
+        - columns:
+            - span: 4
+              components:
+                - displayer:
+                    type: PIECHART
+                    subtype: DONUT
+                    general:
+                      title: Is Citeable
+                    lookup: 
+                      uuid: STATISTICS
+                      filter:
+                        - column: Metric
+                          function: EQUALS_TO
+                          args:
+                            - software_doi
+                      group:
+                        - columnGroup:
+                            source: Label
+                          functions:
+                            - source: Label
+                            - source: Value
+                              function: SUM
+
+            - span: 4
+              components:
+                - displayer:
+                    type: PIECHART
+                    subtype: DONUT
+                    general:
+                      title: Has releases
+                    lookup: 
+                      uuid: STATISTICS
+                      filter:
+                        - column: Metric
+                          function: EQUALS_TO
+                          args:
+                            - software_releases
+                      group:
+                        - columnGroup:
+                            source: Label
+                          functions:
+                            - source: Label
+                            - source: Value
+                              function: SUM
+
+            - span: 4
+              components:
+                - displayer:
+                    type: PIECHART
+                    subtype: DONUT
+                    general:
+                      title: Has mentions
+                    lookup: 
+                      uuid: STATISTICS
+                      filter:
+                        - column: Metric
+                          function: EQUALS_TO
+                          args:
+                            - software_mentions
+                      group:
+                        - columnGroup:
+                            source: Label
+                          functions:
+                            - source: Label
+                            - source: Value
+                              function: SUM
+
+
+        - columns:
+            - span: 4
+              components:
+                - displayer:
+                    type: PIECHART
+                    subtype: DONUT
+                    extraConfiguration: >-
+                      {
+                            "color": [
+                            "#ff6961", 
+                            "#f8D66D",
+                            "#8cd47e",
+                            "#7abd7e"
+                            ]
+                      }
+                    general:
+                      title: Repository Type
+                    lookup: 
+                      uuid: STATISTICS
+                      filter:
+                        - column: Metric
+                          function: EQUALS_TO
+                          args:
+                            - software_repository
+                      group:
+                        - columnGroup:
+                            source: Label
+                          functions:
+                            - source: Label
+                            - source: Value
+                              function: SUM
+
+            - span: 4
+              components:
+                - displayer:
+                    type: PIECHART
+                    subtype: DONUT
+                    extraConfiguration: >-
+                      {
+                            "color": [
+                            "#ff6961",
+                            "#f8D66D", 
+                            "#8cd47e",
+                            "#7abd7e"
+                            ]
+                      }
+                    general:
+                      title: License Type
+                    lookup: 
+                      uuid: STATISTICS
+                      filter:
+                        - column: Metric
+                          function: EQUALS_TO
+                          args:
+                            - software_license_type
+                      group:
+                        - columnGroup:
+                            source: Label
+                          functions:
+                            - source: Label
+                            - source: Value
+                              function: SUM
+            - span: 4
+              components:
+                - displayer:
+                    type: PIECHART
+                    subtype: DONUT
+                    general:
+                      title: Team size
+                    extraConfiguration: >-
+                      {
+                            "color": [
+                            "#8cd47e",
+                            "#7abd7e",
+                            "#ff6961",
+                            "#f8D66D"
+                            ]
+                      }
+                    lookup: 
+                      uuid: STATISTICS
+                      filter:
+                        - column: Metric
+                          function: EQUALS_TO
+                          args:
+                            - software_contributors
+                      group:
+                        - columnGroup:
+                            source: Label
+                          functions:
+                            - source: Label
+                            - source: Value
+                              function: SUM
+
+        - columns:
+            - span: 4
+              components:
+                - displayer:
+                    type: PIECHART
+                    subtype: DONUT
+                    general:
+                      title: Language
+                    lookup: 
+                      uuid: STATISTICS
+                      filter:
+                        - column: Metric
+                          function: EQUALS_TO
+                          args:
+                            - language_count_abbrev
+                      group:
+                        - columnGroup:
+                            source: Label
+                          functions:
+                            - source: Label
+                            - source: Value
+                              function: SUM
+
+        - columns:
+            - components:
+                - html: <hr />Software Impact Metrics
+                  properties:
+                    font-size: large
+                    font-weight: bold
+                    vertical-align: center
+                    padding: 10px
+                    margin-bottom: 10px
+
+        - columns:
+            - span: 3
+              components:
+                   - displayer:
+                        type: METRIC
+                        general:
+                          title: Stars
+                        chart:
+                          width: 150
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-star-o";
+                        columns:
+                          - id: Value
+                            pattern: "#"
+                        lookup:
+                            uuid: METRICS
+                            filter:
+                             - column: Metric
+                               function: EQUALS_TO
+                               args:
+                                 - total_stars
+                            group:
+                              - functions:
+                                  - source: value
+
+            - span: 3
+              components:
+                   - displayer:
+                        type: METRIC
+                        general:
+                          title: Forks
+                        chart:
+                          width: 150
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-code-fork";
+                        columns:
+                          - id: Value
+                            pattern: "#"
+                        lookup:
+                            uuid: METRICS
+                            filter:
+                             - column: Metric
+                               function: EQUALS_TO
+                               args:
+                                 - total_forks
+                            group:
+                              - functions:
+                                  - source: value
+
+            - span: 3
+              components:
+                   - displayer:
+                        type: METRIC
+                        general:
+                          title: Issues
+                        chart:
+                          width: 150
+                        html:
+                          javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-github";
+                        columns:
+                          - id: Value
+                            pattern: "#"
+                        lookup:
+                            uuid: METRICS
+                            filter:
+                             - column: Metric
+                               function: EQUALS_TO
+                               args:
+                                 - total_issues
+                            group:
+                              - functions:
+                                  - source: value
+
+        - columns:
+          - span: 3
+            components:
+              - displayer:
+                  type: PIECHART
+                  subtype: DONUT
+                  general:
+                    title: TEST
+                  lookup: 
+                    uuid: STATISTICS
+                    filter:
+                      - column: Metric
+                        function: EQUALS_TO
+                        args:
+                          - software_doi
+                    group:
+                      - columnGroup:
+                          source: Label
+                        functions:
+                          - source: Label
+                          - source: Value
+                            function: SUM
+
+
+        - columns:
+              - components:
+                      - html: >-
+                            <hr style="width: 2px; border: dashed 1px" />
+                            <p style="margin: 1px 10px 30px 10px; font-size: x-large">
+
+                                <strong>Entries</strong>
+                            </p>
+                      - settings:
+                            component: table
+                            external:
+                                width: 100%
+                                height: 500px
+                            lookup:
+                                uuid: STATISTICS
+                                filter:
+                                    - column: Metric
+                                      function: EQUALS_TO
+                                      args:
+                                        - software_doi
+                                group:
+                                    - functions:
+                                          - source: Metric
+                                          - source: Label
+                                          - source: Value
