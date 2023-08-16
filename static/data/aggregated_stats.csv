@@ -1,4 +1,22 @@
 name, label, value
+mention_types, workshop, 1
+mention_types, book, 1
+mention_types, magazineArticle, 2
+mention_types, newspaperArticle, 4
+mention_types, report, 4
+mention_types, bookSection, 6
+mention_types, thesis, 6
+mention_types, dataset, 9
+mention_types, poster, 17
+mention_types, highlight, 26
+mention_types, videoRecording, 27
+mention_types, computerProgram, 28
+mention_types, blogPost, 29
+mention_types, conferencePaper, 36
+mention_types, webpage, 38
+mention_types, other, 47
+mention_types, presentation, 135
+mention_types, journalArticle, 263
 software_contributors, huge team (20+), 3
 software_contributors, large team (6-20), 37
 software_contributors, single contributor, 56
@@ -8,10 +26,6 @@ package_manager_type, pypi, 9
 package_manager_type, dockerhub, 17
 software_mentions, no mentions, 117
 software_mentions, has mentions, 117
-software_maintenance_status, unknown, 5
-software_maintenance_status, maintenance only, 44
-software_maintenance_status, not maintained, 91
-software_maintenance_status, active development, 94
 language_count, Jasmin, 1
 language_count, Go, 1
 language_count, Verilog, 1
@@ -98,6 +112,8 @@ language_count, HTML, 52
 language_count, Dockerfile, 52
 language_count, Shell, 97
 language_count, Python, 165
+mention_citable, no, 296
+mention_citable, yes, 383
 software_repository, none, 1
 software_repository, gitlab, 2
 software_repository, github, 231
@@ -105,9 +121,6 @@ software_doi, not citable, 31
 software_doi, is citable, 203
 in_package_manager, yes, 11
 in_package_manager, no, 223
-software_license_type, other, 5
-software_license_type, copyleft, 23
-software_license_type, permissive, 213
 language_count_abbrev, C, 16
 language_count_abbrev, TypeScript, 21
 language_count_abbrev, C++, 23
@@ -119,6 +132,13 @@ language_count_abbrev, Python, 165
 language_count_abbrev, other, 408
 software_releases, no releases, 43
 software_releases, has releases, 191
+software_maintenance_status, unknown, 5
+software_maintenance_status, maintenance only, 44
+software_maintenance_status, not maintained, 91
+software_maintenance_status, active development, 94
+software_license_type, other, 5
+software_license_type, copyleft, 23
+software_license_type, permissive, 213
 software_license, LGPL-2.0, 1
 software_license, Apache 2.0, 1
 software_license, BSD-2-Clause, 1
