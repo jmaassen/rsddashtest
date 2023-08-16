@@ -1,0 +1,102 @@
+properties:
+   metricsData: https://raw.githubusercontent.com/jmaassen/rsddashtest/main/static/data/high_level_metrics.csv
+   statisticsData: https://raw.githubusercontent.com/jmaassen/rsddashtest/main/static/data/aggregated_stats.csv
+   bgColor: Lavender
+
+global:
+    settings:
+      html:
+        html: >-
+          <div id="${this}" class="card-pf card-pf-aggregate-status" style="background-color: ${bgColor}; width: 90%; height: 100px; margin: 10px; border-radius: 10px">
+            <h2 style="font-weight: 600; font-size: x-large" id="${this}Value">${value}</h2>
+            <p style="font-weight: 400" id="${this}Title"><em id="${this}Icon" class=""></em> ${title}</p>
+          </div>
+      extraConfiguration: >-
+        {
+            "color": [
+             "#ff6961",
+             "#8cd47e",
+             "#7abd7e",
+             "#f8D66D"
+             ]
+        }
+
+datasets:
+    - uuid: METRICS      
+      url: ${metricsData}
+      columns: 
+        - id: Metric
+          type: LABEL
+        - id: Value
+          type: Label
+
+    - uuid: STATISTICS      
+      url: ${statisticsData}
+      columns: 
+        - id: Metric
+          type: LABEL
+        - id: Label
+          type: LABEL
+        - id: Value
+          type: Label
+
+pages:
+  - name: index
+    properties:
+      margin: 10px
+    components:
+      - properties:
+          background-color: blue
+          opacity: 0.5
+          color: white
+          font-weight: bolder
+          padding: 20px
+          margin-bottom: 20px
+        html: >-
+          <strong style="font-size: xx-large; font-weight: bolder; font-family: sans-serif"> Netherlands eScience Center RSD metrics </strong>
+          <br />
+      - type: TABS
+        properties:
+          width: 100%
+          navGroupId: MainGroup
+
+  - name: Metrics
+    properties:
+      margin: 10px
+    components:
+      - properties:
+          margin-bottom: 20px
+        markdown: >-
+          This is the metrics page.          
+        rows:
+          - columns: 
+                - span: 2
+                  components:
+                       - displayer:
+                            type: METRIC
+                            general:
+                              title: Software Entries
+                            chart:
+                              width: 200
+                            html:
+                              javascript: document.getElementById(${this}.id + "Icon").className = "fa fa-code";
+                            columns:
+                              - id: Value
+                                pattern: "#"
+                            lookup:
+                                uuid: METRICS
+                                filter:
+                                 - column: Metric
+                                   function: EQUALS_TO
+                                   args:
+                                     - total_software_entries
+                                group:
+                                  - functions:
+                                     - source: value
+          
+navTree:
+  root_items:
+    - type: GROUP
+      id: MainGroup
+      children:
+        - page: Metrics
