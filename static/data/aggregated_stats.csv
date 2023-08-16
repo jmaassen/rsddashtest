@@ -3,6 +3,9 @@ software_contributors, huge team (20+), 3
 software_contributors, large team (6-20), 37
 software_contributors, single contributor, 56
 software_contributors, small team (2-5), 138
+package_manager_type, npm, 1
+package_manager_type, pypi, 9
+package_manager_type, dockerhub, 17
 software_mentions, no mentions, 117
 software_mentions, has mentions, 117
 language_count, Jasmin, 1
@@ -96,6 +99,8 @@ software_repository, gitlab, 2
 software_repository, github, 231
 software_doi, not citable, 31
 software_doi, is citable, 203
+in_package_manager, yes, 11
+in_package_manager, no, 223
 software_license_type, other, 5
 software_license_type, copyleft, 23
 software_license_type, permissive, 213
