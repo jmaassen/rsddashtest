@@ -103,6 +103,15 @@ software_repository, gitlab, 2
 software_repository, github, 231
 software_doi, not citable, 31
 software_doi, is citable, 203
+language_count_abbrev, C, 16
+language_count_abbrev, TypeScript, 21
+language_count_abbrev, C++, 23
+language_count_abbrev, Java, 31
+language_count_abbrev, Jupyter Notebook, 41
+language_count_abbrev, JavaScript, 46
+language_count_abbrev, Shell, 97
+language_count_abbrev, Python, 165
+language_count_abbrev, other, 408
 software_releases, no releases, 43
 software_releases, has releases, 191
 software_license, LGPL-2.0, 1
